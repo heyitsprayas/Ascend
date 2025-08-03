@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Science Program - Uniglobe College</title>
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3c72, #3C8DBC);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 5px solid #3C8DBC;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.3s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    section {
+      margin-bottom: 80px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #3C8DBC;
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #3C8DBC;
+      margin: 10px auto;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      width: 350px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      color: greenyellow;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: greenyellow;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3 ease;
+    }
+
+    .btn:hover {
+      background: greenyellow;
+    }
+
+    .image-text-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .image-box {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .image-box img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .text-box {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .text-box h3 {
+      font-size: 1.6rem;
+      color: #1e3c72;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 80px;
+    }
+
+    footer p {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+   <header>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">Uniglobe School/College</div>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="#programs">Programs</a></li>
+          <li class="nav-item"><a href="#admissions">Admissions</a></li>
+          <li class="nav-item"><a href="#events">Events</a></li>
+          <li class="nav-item"><a href="login.html" target="_blank">MIS</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <header>
+
+  <header>
+    <h1>Science Program</h1>
+    <p>Empowering future scientists with quality education and modern facilities.</p>
+  </header>
+
+  <div class="container">
+
+    <section data-aos="fade-up">
+      <h2>About the Science Program</h2>
+      <div class="text-box">
+        <p>[Uniglobe Secondary School +2 Science program is a dynamic hub for aspiring business leaders. Fueled by a passion for understanding how organisation works, students embark on a comprehensive journey that equips them with the skills to succeed in today’s ever-changing marketplace. Led by experienced instructors with real-world experience, the program goes beyond textbooks. Students get to put their learning into action through interactive exercises, case studies, and simulations, making the knowledge truly their own.<br>
+<br>
+Uniglobe Secondary School modern classrooms provide a stimulating environment for learning. Here, students develop their critical thinking and problem-solving skills through engaging discussions and group projects. They learn the importance of effective communication, teamwork, and strategic decision-making – all essential ingredients for a successful business career. As students delve into finance, marketing, and leadership principles, they’re well on their way to becoming the next generation of innovative and impactful business leaders.]</p>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <h2>Courses Offered</h2>
+      <div class="card-container">
+        <div class="card">
+          <img src="c:\Users\Dell\Downloads\RSN05189.png" alt="Physics">
+          <div class="card-content">
+            <h3>Physics</h3>
+            <p>[physics department of the uniglobe college is one of the strongest there in whole nepal for the future engineers]</p>
+            <a href="#" class="btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="UGSS_Photoshoot_2023-24.png" alt="Chemistry">
+          <div class="card-content">
+            <h3>Chemistry</h3>
+            <p>[uniglobe college provides the most modern lab there is in nepal. And also the most advanced classes. ]</p>
+            <a href="Physics.html" class="btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="c:\Users\Dell\Downloads\RSN05222-1.png" alt="Biology">
+          <div class="card-content">
+            <h3>Biology</h3>
+            <p>[the biology department is a vast department made just for the future doctors]</p>
+            <a href="#" class="btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <h2>eligibility for +2 science </h2>
+      <div class="image-text-grid">
+        <div class="image-box">
+          <img src="c:\Users\Dell\Downloads\UGSS_Photoshoot_2023-24 (1).png" alt="Why Choose Us">
+        </div>
+        <div class="text-box">
+          <h3>Excellence in Science Education</h3>
+          <p>[To start on this exciting journey in business, we seek students with a strong foundation in core subjects. While a minimum SEE GPA of 1.6 is important, we also value a well-rounded understanding of communication and analytical skills. Therefore, a minimum D+ in English, Nepali, and Mathematics is desired. Additionally, exposure to Social Studies and Science provides valuable context for navigating the complexities of the business world.]</p>
+          <ul>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <h2>Facilities & Resources</h2>
+      <div class="image-text-grid">
+        <div class="text-box">
+          <h3>Advanced Learning Environment</h3>
+          <p>[Describe the science labs, library resources, digital tools, safety equipment, and student support systems.]</p>
+          <p>[Include details about computer-aided learning, project-based teaching, and extracurricular science clubs.]</p>
+        </div>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/500x350" alt="Facilities">
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <h2>Career & Further Studies</h2>
+      <div class="text-box">
+        <p>[Discuss the career paths available after completing the science program: Engineering, Medicine, BSc, Environmental Science, Data Science, etc.]</p>
+        <p>[Mention university placement records, scholarship opportunities, and alumni success stories.]</p>
+      </div>
+    </section>
+
+    <section data-aos="fade-up" style="text-align: center;">
+      <h2>Ready to Join?</h2>
+      <p style="max-width: 700px; margin: 0 auto 20px;">
+        [Insert a short call-to-action inviting students to apply, visit the campus, or contact the admissions office.]
+      </p>
+      <a href="#" class="btn">Apply Now</a>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Uniglobe College. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false
+    });
+  </script>
+
+</body>
+</html>

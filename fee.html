@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Page Title</title>
+  <link rel="stylesheet" href="ui.css">
+  <!-- ✅ Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body>
+  
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn">≣</button>
+    <a href="ui.html"><i class="fas fa-home"></i> <span>UI</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+  
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <header>
+      <h1>Fee Details</h1>
+    </header>
+
+<main>
+
+
+  <div class="card">
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+      <thead style="background:#020c5e; color:white;">
+        <tr><th>Description</th><th>Amount (NPR)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Total Fee</td><td>120,000</td></tr>
+        <tr><td>Paid</td><td>80,000</td></tr>
+        <tr><td>Remaining</td><td>40,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Payment History</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+      <thead style="background:#020c5e; color:white;">
+        <tr><th>Date</th><th>Amount (NPR)</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>June 2025</td><td>40,000</td><td style="color:green; font-weight:bold;">Paid</td></tr>
+        <tr><td>July 2025</td><td>40,000</td><td style="color:green; font-weight:bold;">Paid</td></tr>
+        <tr><td>August 2025</td><td>40,000</td><td style="color:red; font-weight:bold;">Due</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+
+  
+  </div>
+
+  <!-- ✅ Fixed JS -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+  </script>
+
+</body>
+</html>

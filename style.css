@@ -1,0 +1,503 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FAFAFA;
+  color: #2E2E2E;
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+a { text-decoration: none; color: inherit; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+header {
+  background: #FFFFFF;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(74,144,226,0.2);
+  box-shadow: 0 2px 8px rgba(74,144,226,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4A90E2;
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #4A90E2;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #6FCF97;
+}
+.hero {
+  padding: 140px 0;
+  text-align: center;
+  background: url('campus.jpg') center/cover no-repeat;
+  color: white;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 70, 140, 0.6); /* Deeper blue overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-img {
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+  width: 200px;
+}
+
+.hero-caption {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  background: #4A90E2;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #6FCF97;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(74,144,226,0.3);
+}
+
+/* === Sections === */
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #4A90E2;
+  font-family: 'Playfair Display', serif;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #F2C94C;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* === Cards === */
+.cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 360px;
+  background: white;
+  border-radius: 16px;
+  border-top: 5px solid #4A90E2;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.card-img {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #2E2E2E;
+}
+
+.card p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* === About Us Blocks === */
+.about-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.about-block {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: #fdfdfd;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.about-block img {
+  width: 120px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.about-text h3 {
+  color: #4A90E2;
+  margin-bottom: 8px;
+}
+
+/* === Events === */
+.event-flex {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.event-item {
+  flex: 1;
+  min-width: 280px;
+  max-width: 320px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+.event-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.event-item h3 {
+  color: #4A90E2;
+  margin: 10px 15px 8px;
+}
+
+.event-item p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 15px;
+}
+
+/* === Gallery Grid === */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.gallery-grid img {
+  border-radius: 12px;
+  height: 180px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* === Video Container === */
+.video-wrapper {
+  max-width: 700px;
+  margin: 20px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 15px rgba(0,0,0,0.2);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.more {
+  padding-left: 500px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* === Quote === */
+.quote {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #6FCF97;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* === FAQ === */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 15px 20px;
+  background: #F2C94C;
+  font-weight: 600;
+  color: #2E2E2E;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.faq-item.active .faq-question {
+  background: #6FCF97;
+  color: white;
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 20px;
+  max-height: 200px;
+}
+
+/* === Testimonials === */
+.slider {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.slide {
+  text-align: center;
+  color: #555;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.slide p {
+  margin-bottom: 15px;
+}
+
+.slide cite {
+  color: #4A90E2;
+  font-weight: 600;
+}
+
+/* === Contact Section === */
+.contact-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #eaf4fc, #ffffff);
+}
+
+.contact-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  font-size: 1.1rem;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-links {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #4A90E2;
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a:hover {
+  color: #6FCF97;
+  transform: scale(1.1);
+}
+
+.contact-form {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form button {
+  align-self: center;
+  width: 200px;
+  background: #4A90E2;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 40px 0;
+  background: #4A90E2;
+  color: #fff;
+  margin-top: 60px;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .section-title { font-size: 2rem; }
+  .navbar { flex-direction: column; gap: 15px; }
+  .nav-links { gap: 15px; flex-direction: column; }
+  .about-flex, .contact-flex { flex-direction: column; }
+  .hero-caption { position: static; margin-top: 20px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+#splash-screen img {
+  width: 850px;         
+  animation: popIn 0.8s ease forwards;
+  border: none !important;      
+  outline: none !important;     
+  box-shadow: none !important;  
+  background: transparent !important; 
+}
+

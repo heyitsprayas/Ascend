@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Teachers | Uniglobe School</title>
+  <!-- Font & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #2E2E2E;
+      line-height: 1.7;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: #4A90E2;
+      color: white;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: white;
+      padding: 15px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      text-align: center;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #4A90E2;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(74,144,226,0.2);
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background: #6FCF97;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(74,144,226,0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #4A90E2;
+      margin: 50px 0 30px;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #F2C94C;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .teacher-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .teacher-img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .teacher-info {
+      padding: 20px;
+    }
+
+    .teacher-info h3 {
+      font-size: 1.4rem;
+      color: #2E2E2E;
+      margin-bottom: 6px;
+    }
+
+    .teacher-subject {
+      color: #4A90E2;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .teacher-hod {
+      color: #E2A84A !important;
+      font-weight: 700;
+      font-size: 1rem;
+      background: #FFF8E1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .teacher-desc {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 12px;
+      font-size: 1.1rem;
+    }
+
+    .social-icons a {
+      color: #4A90E2;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #6FCF97;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #2E2E2E;
+      color: white;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      .section-title { font-size: 2rem; }
+      .top-bar { padding: 12px; }
+      .back-btn { font-size: 0.95rem; padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <div class="top-bar">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Our Dedicated Teachers</h1>
+    <p>Meet the passionate educators shaping the future of our students.</p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Computer Science -->
+    <h2 class="section-title">Computer Science Department</h2>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="comp1.png " alt="Head of Computer Department" height="10px" width="15px" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Navin Gurung</h3>
+          <span class="teacher-hod">Head of Department</span>
+          <span class="teacher-subject">Computer Science</span>
+          <p class="teacher-desc">
+            Navin Gurung MSc (IT) Designation : Head of Department of Computer Science Teaching Experience : 15 Years Recognition and Professional Association : Best Teacher Award 2065, 2066, 2068, 2070 (Galaxy Public School), Best Teacher Award (2066) Media Aaja ko Awaj.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="comp2.png" alt="Computer Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Kamal Tamrakar</h3>
+          <span class="teacher-subject">Computer Science</span>
+          <p class="teacher-desc">
+            Kamal Tamrakar Designation : Faculty of Computer Science Teaching Experience : Recognition and Professional Association : Training : Academic Endeavour :
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="comp3.png" alt="Computer Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Anita Shah</h3>
+          <span class="teacher-subject">Computer Science</span>
+          <p class="teacher-desc">
+            Passionate about cybersecurity and digital ethics. Organizes coding bootcamps annually.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mathematics -->
+    <h2 class="section-title">Mathematics Department</h2>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="math1.png" alt="Head of Math Department" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Agni Datta Joshi</h3>
+          <span class="teacher-hod">Head of Department</span>
+          <span class="teacher-subject">Mathematics</span>
+          <p class="teacher-desc">
+            Agni Datt Joshi M.A (Mathematics), BEd (TU) Designation : Head of the Department of Mathematics Teaching Experience : 16 years Recognition and Professional Association : • Teaching excellence Award - 2022 - 2024 • Recognition for Outstanding Contribution to STEM Education - 2022 • Professional Association Life Member of Nepal Mathematical Society. 
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="math2.png" alt="Math Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Bhavanand Chaudhary</h3>
+          <span class="teacher-subject">Mathematics</span>
+          <p class="teacher-desc">
+            Bhavanand Chaudhary MSc (TU) Designation : Faculty of Mathematics Teaching Experience : 13 years Recognition and Professional Association : Best teacher awad 2021, Awaded as best student in slc level by former education minister Arjun narsingh K.C. Training : Transformative Teacher’s Learning for the 21 st Century Classroom
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="math3.png" alt="Math Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Rajendra Bhattarai</h3>
+          <span class="teacher-subject">Mathematics</span>
+          <p class="teacher-desc">
+            Rajendra Bhattarai MSc (TU) Designation : Faculty of Mathematics Teaching Experience : 12 years Recognition and Professional Association : Training : Transformative Teacher’s Learning for the 21st Century Classroom , (January 10 - 20, 2022) Academic Endeavour:
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- English -->
+    <h2 class="section-title">English Department</h2>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="eng1.png" alt="Head of English Department" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Tika Datta Subedi</h3>
+          <span class="teacher-hod">Head of Department</span>
+          <span class="teacher-subject">English</span>
+          <p class="teacher-desc">
+           tika Datta Subedi Mphil (TU) Designation : Faculty of English Teaching Experience : 18 years Recognition and Professional Association : Best Teacher award by Nobel Academy Baneshwor , Best teacher awarded by Janamaitri Multiple college Kuleshwor Training : effective Teaching Seminar in Janamaitri Multiple college.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="eng2.png" alt="English Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Dr. Anju Gupta</h3>
+          <span class="teacher-subject">English</span>
+          <p class="teacher-desc">
+            Anju Gupta. Ph.D (TU) Designation : Faculty of English Teaching Experience : 29 Years Recognition and Professional Association : Have been awarded "Nepal Bidyabhushan Award" under 'A' category. Training : Transformative Teacher's Learning for the 21st Century Classroom, January, 2024 Academic Endeavour
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="eng3.png" alt="Head of English Department" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Ganesh Raj Panday</h3>
+         >
+          <span class="teacher-subject">English</span>
+          <p class="teacher-desc">
+           tika Datta Subedi Mphil (TU) Designation : Faculty of English Teaching Experience : 18 years Recognition and Professional Association : Best Teacher award by Nobel Academy Baneshwor , Best teacher awarded by Janamaitri Multiple college Kuleshwor Training : effective Teaching Seminar in Janamaitri Multiple college.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nepali -->
+    <h2 class="section-title">Nepali Department</h2>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="nep1.png" alt="Head of Nepali Department" class="teacher-img">
+        <div class="teacher-info">
+          <h3></h3>
+          <span class="teacher-hod">Head of Department</span>
+          <span class="teacher-subject">Nepali</span>
+          <p class="teacher-desc">
+            चुडामणि पाण्डे (पीएच. डी) पदः नेपाली विभाग प्रमुख शिक्षण अनुभवः १४ वर्ष मान्यता र व्यावसायिक संघः उत्कृष्ट शिक्षक पुरस्कार, २०१६, २०१७, २०२३ भाषाविज्ञान सदस्य समाज, टेसन का सदस्य। तालिमः ABI नेपाल मा शिक्षक प्रशिक्षण शैक्षिक प्रयासः पुस्तक – भाषाविज्ञान पुस्तक, नेपाली कक्षा ११ र १२, कार्यपुस्तक
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="nep2.png" alt="Nepali Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Diwas Mani Bhattarai</h3>
+          <span class="teacher-subject">Nepali</span>
+          <p class="teacher-desc">
+           दिवासमणि भट्टराई एमफिल टियुपदः नेपाली शिक्षक शिक्षण अनुभवः मान्यता र व्यावसायिक संघः तालिमः शैक्षिक प्रयासः
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="teacher-card">
+        <img src="nep3.png" alt="Nepali Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Dr. Jivan Shrestha</h3>
+          <span class="teacher-subject">Nepali</span>
+          <p class="teacher-desc">
+          जीवनकुमार श्रेष्ठ (पीएच. डी) पदः नेपाली शिक्षक शिक्षण अनुभवः १४ वर्ष मान्यता र व्यावसायिक संघः तालिमः २१ औं शताब्दीको लागि परिवर्तनकारी शिक्षकको सिकाइ कक्षा कोठा, (जनवरी १० – २०, २०२२) शैक्षिक प्रयासः विभिन्न जर्नलहरूमा लेखहरू रिसर्च गर्नुहोस्। पाठ्यपुस्तक र सन्दर्भ विद्यालय र विश्वविद्यालय पाठ्यक्रमको लागि पुस्तक लेखन र सम्पादन, उपन्यास – चरैवेति
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Chemistry -->
+    <h2 class="section-title">Chemistry Department</h2>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="images/teacher-chemistry-hod.jpg" alt="Head of Chemistry Department" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Dr. Sunita Pandey</h3>
+          <span class="teacher-hod">Head of Department</span>
+          <span class="teacher-subject">Chemistry</span>
+          <p class="teacher-desc">
+            PhD in Organic Chemistry. Promotes safe and engaging lab experiences.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-researchgate"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="images/teacher-chemistry2.jpg" alt="Chemistry Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Amit Shrestha</h3>
+          <span class="teacher-subject">Chemistry</span>
+          <p class="teacher-desc">
+            Simplifies complex topics with real-world examples and models.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics -->
+    <h2 class="section-title">Physics Department</h2>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <img src="images/teacher-physics-hod.jpg" alt="Head of Physics Department" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Mr. Binod Rajbhandari</h3>
+          <span class="teacher-hod">Head of Department</span>
+          <span class="teacher-subject">Physics</span>
+          <p class="teacher-desc">
+            Innovator in STEM education. Leads robotics and science fair initiatives.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <img src="images/teacher-physics2.jpg" alt="Physics Teacher" class="teacher-img">
+        <div class="teacher-info">
+          <h3>Nisha Lama</h3>
+          <span class="teacher-subject">Physics</span>
+          <p class="teacher-desc">
+            Passionate about astronomy and space science. Hosts monthly sky-gazing sessions.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Uniglobe Secondary School/College | Kathmandu, Nepal</p>
+  </footer>
+
+</body>
+</html>

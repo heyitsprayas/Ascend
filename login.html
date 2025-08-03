@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Uniglobe</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <img src="Uniglobelogo.png" alt="Uniglobe Logo" />
+    </div>
+    <form class="login-form" onsubmit="handleLogin(event)">
+      <h2>Login</h2>
+
+      <div class="input-group">
+        <label for="role">Role</label>
+        <select id="role" required>
+          <option value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="parent">Parent</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Username</label>
+        <input type="text" id="email" placeholder="Enter your username" required />
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+      </div>
+
+      <div class="toggle-password" onclick="togglePassword()">Show/Hide Password</div>
+
+      <div class="remember-me">
+        <input type="checkbox" id="rememberMe" />
+        <label for="rememberMe">Remember me</label>
+      </div>
+
+      <div class="extra-links">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">Login</a></button>
+      <p id="error-message" class="error-message"></p>
+    </form>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

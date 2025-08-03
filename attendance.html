@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Page Title</title>
+  <link rel="stylesheet" href="ui.css">
+  <!-- ✅ Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Sidebar styling */
+    .sidebar {
+      width: 220px;
+      background: #020c5e;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 15px;
+      transition: width 0.3s ease;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+
+    .sidebar a i {
+      margin-right: 8px;
+    }
+
+    /* Collapsed state */
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    .sidebar.collapsed h2,
+    .sidebar.collapsed a {
+      text-align: center;
+    }
+
+    .sidebar.collapsed a i {
+      margin: 0;
+    }
+
+    .sidebar.collapsed a span {
+      display: none;
+    }
+
+    /* Content area */
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .content.collapsed {
+      margin-left: 70px;
+    }
+
+    /* Main content */
+    main {
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn">≣</button>
+    <a href="ui.html"><i class="fas fa-home"></i> <span>UI</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <header>
+      <h1></h1>
+    </header>
+
+
+  <main>
+  <h2>Attendance Records</h2>
+
+  <!-- Summary Table -->
+  <div class="card">
+    <table class="attendance-table">
+      <tbody>
+        <tr><th>Total Days</th><td>200</td></tr>
+        <tr><th>Days Present</th><td>176</td></tr>
+        <tr><th>Days Absent</th><td>24</td></tr>
+        <tr><th>Attendance %</th><td class="percent">88%</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" style="width:88%;"></div>
+    </div>
+    <p class="progress-text">Attendance: 88%</p>
+  </div>
+
+  <!-- Recent Attendance -->
+  <div class="card">
+    <h3>Recent Attendance</h3>
+    <table class="recent-attendance">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>01 Aug 2025</td><td class="present">✅ Present</td></tr>
+        <tr><td>02 Aug 2025</td><td class="present">✅ Present</td></tr>
+        <tr><td>03 Aug 2025</td><td class="absent">❌ Absent</td></tr>
+        <tr><td>04 Aug 2025</td><td class="present">✅ Present</td></tr>
+        <tr><td>05 Aug 2025</td><td class="present">✅ Present</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<style>/* General table styling */
+.attendance-table, .recent-attendance {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.attendance-table th,
+.attendance-table td,
+.recent-attendance th,
+.recent-attendance td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.attendance-table th {
+  background: #020c5e;
+  color: white;
+  text-align: left;
+}
+
+.attendance-table td.percent {
+  font-weight: bold;
+  color: green;
+}
+
+/* Progress bar */
+.progress-container {
+  background: #eee;
+  border-radius: 8px;
+  margin: 15px 0;
+  height: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: #27ae60;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.6s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Recent attendance table */
+.recent-attendance th {
+  background: #020c5e;
+  color: white;
+}
+
+.recent-attendance tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+.present {
+  color: green;
+  font-weight: bold;
+}
+
+.absent {
+  color: red;
+  font-weight: bold;
+}
+
+/* Hover effect */
+.recent-attendance tbody tr:hover {
+  background: #eef3ff;
+  cursor: pointer;
+}
+</style>
+
+
+  
+  </div>
+
+  <!-- ✅ Fixed JS -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+  </script>
+
+</body>
+</html>

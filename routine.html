@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Page Title</title>
+  <link rel="stylesheet" href="ui.css">
+  <!-- ✅ Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body>
+   
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn">≣</button>
+    <a href="ui.html"><i class="fas fa-home"></i> <span>UI</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <header>
+      <h1></h1>
+    </header>
+
+<main>
+  <main style="padding:20px;">
+  <h1>Class Routine</h1>
+  <p style="margin-top:10px;">View or download the full class routine below:</p>
+
+  <!-- PDF Viewer -->
+  <div style="margin-top:20px;">
+    <iframe src="routine.pdf" style="width:100%; height:600px; border:1px solid #ccc; border-radius:8px;"></iframe>
+  </div>
+
+  <!-- Download Button -->
+  <div style="margin-top:15px; text-align:center;">
+    <a href="routine.pdf" class="btn" download>Download Routine (PDF)</a>
+  </div>
+</main>
+
+</main>
+
+
+
+  
+  </div>
+
+  <!-- ✅ Fixed JS -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+  </script>
+
+</body>
+</html>

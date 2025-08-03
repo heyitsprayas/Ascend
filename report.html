@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Page Title</title>
+  <link rel="stylesheet" href="ui.css">
+  <!-- ✅ Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body>
+   
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn">≣</button>
+    <a href="ui.html"><i class="fas fa-home"></i> <span>UI</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <header>
+      <h1></h1>
+    </header>
+
+<main>
+  <h2>Academic Reports</h2>
+
+  <div class="card">
+    <h3>Mid-Term Exam Results</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+      <thead style="background:#020c5e; color:white;">
+        <tr><th>Subject</th><th>Score (%)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>English</td><td>78%</td></tr>
+        <tr><td>Chemistry</td><td>85%</td></tr>
+        <tr><td>Physics</td><td>82%</td></tr>
+        <tr><td>Mathematics</td><td>90%</td></tr>
+        <tr><td>Computer Science</td><td>88%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Overall Performance</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+      <tbody>
+        <tr><th style="background:#020c5e; color:white;">Grade</th><td>A</td></tr>
+        <tr><th style="background:#020c5e; color:white;">Percentage</th><td>84%</td></tr>
+        <tr><th style="background:#020c5e; color:white;">Status</th><td style="color:green; font-weight:bold;">Promoted</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+
+
+  
+  </div>
+
+  <!-- ✅ Fixed JS -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+  </script>
+
+</body>
+</html>

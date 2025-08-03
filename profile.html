@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Page Title</title>
+  <link rel="stylesheet" href="ui.css">
+  <!-- ✅ Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body>
+  
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn">≣</button>
+    <a href="ui.html"><i class="fas fa-home"></i> <span>UI</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    
+
+
+<main>
+  <h2>Student Profile</h2>
+
+  <!-- Profile Header -->
+  <div class="profile-card">
+    <div class="profile-left">
+      <img src="pp.jpeg" alt="Student Photo">
+      <p><strong>Symbol No:</strong> 27518111819</p>
+    </div>
+    <div class="profile-right">
+      <table class="profile-table">
+        <tbody>
+          <tr><th>Batch</th><td>2081/82</td><th>Board</th><td>National Examinations Board</td></tr>
+          <tr><th>Program</th><td>10+2</td><th>Faculty</th><td>Science</td></tr>
+          <tr><th>Course</th><td>(AY/2081) Day O</td><th>SEE Symbol No.</th><td>03001717Q</td></tr>
+          <tr><th>Barcode Number</th><td>11819</td><th>SEE GPA</th><td>3.7</td></tr>
+          <tr><th>University/Bord Reg. No.</th><td>--</td><th>Attendance ID</th><td>--</td></tr>
+          <tr><th>NEB Symbol No-XI</th><td>--</td><th>NEB Symbol No-XII</th><td>--</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Personal Details -->
+  <div class="card">
+    <h3>Personal Details</h3>
+    <div class="personal-grid">
+      <div>
+        <label>Full Name</label>
+        <p class="info-box">Prayash Pudasaini</p>
+      </div>
+      <div>
+        <label>In Devanagari</label>
+        <p class="info-box">प्रयास पुडासैनी</p>
+      </div>
+      <div>
+        <label>Date of Birth</label>
+        <p class="info-box">2009-03-02</p>
+      </div>
+      <div>
+        <label>Blood Group</label>
+        <p class="info-box">A+</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+  
+  </div>
+  <style>
+    .profile-card {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.profile-left {
+  text-align: center;
+  min-width: 180px;
+}
+
+.profile-left img {
+  width: 150px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 3px solid #020c5e;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-table th {
+  text-align: left;
+  background: #f5f7ff;
+  color: #020c5e;
+  padding: 8px;
+  width: 25%;
+}
+
+.profile-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.personal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+label {
+  font-weight: bold;
+  color: #020c5e;
+}
+
+.info-box {
+  background: #f7f9fc;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 4px;
+  border: 1px solid #ddd;
+}
+
+  </style>
+
+  <!-- ✅ Fixed JS -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+  </script>
+
+</body>
+</html>
