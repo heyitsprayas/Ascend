@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - Uniglobe MIS</title>
+  <link rel="stylesheet" href="ui.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn"><i class="fas fa-bars"></i></button>
+    <a href="student.html"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="report.html" class="active"><i class="fas fa-chart-bar"></i> <span>Reports</span></a>
+    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="profile-info">
+      <img id="profilePic" class="profile-pic" src="default-profile.png" alt="Profile">
+      <div>
+        <span id="profileName">John Doe</span><br>
+        <small id="profileClass">Class</small>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Academic Reports</h1>
+
+    <div class="card">
+      <h3>Term 1 Results</h3>
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:#0A3D91; color:#fff;">
+            <th style="padding:8px; text-align:left;">Subject</th>
+            <th style="padding:8px; text-align:left;">Marks</th>
+            <th style="padding:8px; text-align:left;">Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px;">Mathematics</td>
+            <td style="padding:8px;">88</td>
+            <td style="padding:8px;">A</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;">Chemistry</td>
+            <td style="padding:8px;">82</td>
+            <td style="padding:8px;">A</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;">English</td>
+            <td style="padding:8px;">76</td>
+            <td style="padding:8px;">B+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Overall Performance</h3>
+      <p><strong>Average Marks:</strong> 82</p>
+      <p><strong>Grade:</strong> A</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="Uniglobelogo.png" alt="Logo" class="footer-logo"> © Uniglobe MIS 2025
+  </footer>
+
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Dynamic profile info
+    const name = sessionStorage.getItem('userName');
+    const userClass = sessionStorage.getItem('userClass');
+    const pic = sessionStorage.getItem('profilePic');
+    if (name) document.getElementById('profileName').textContent = name;
+    if (userClass) document.getElementById('profileClass').textContent = userClass;
+    if (pic) document.getElementById('profilePic').src = pic;
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.href = 'login.html';
+    });
+
+    // Dark Mode Toggle (localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️ Light Mode';
+    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️ Light Mode';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>

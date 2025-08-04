@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotel Management - Uniglobe College</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background: #fdfdfd;
+      overflow-x: hidden;
+    }
+
+    /* Header - Clean & Bright */
+    header {
+      background: white;
+      color: #333;
+      text-align: center;
+      padding: 70px 20px 50px;
+      border-bottom: 4px solid #FFD700; /* Gold */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #222;
+      letter-spacing: -0.5px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #666;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    section {
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #FFD700; /* Yellow */
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #1e9fff; /* Blue */
+      margin: 10px auto;
+    }
+
+    /* Text & Image Layout */
+    .flex {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .flex img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      border: 2px solid #eee;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1);
+    }
+
+    .text {
+      flex: 1;
+      color: #555;
+    }
+
+    .text h3 {
+      font-size: 1.6rem;
+      color: #1e9fff; /* Blue */
+      margin-bottom: 12px;
+    }
+
+    .text p {
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    /* Highlight Colors */
+    .yellow { color: #FFD700; }
+    .blue { color: #1e9fff; }
+    .green { color: #4CAF50; }
+
+    /* Features List */
+    .features {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .features li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .features li:before {
+      content: "★";
+      color: #FFD700;
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 0.9rem;
+    }
+
+    /* Call to Action */
+    .cta {
+      text-align: center;
+      margin: 60px 0 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      background: #FFD700; /* Yellow */
+      color: #333;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.15rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.25);
+    }
+
+    .btn:hover {
+      background: #ffca00;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(255, 215, 0, 0.35);
+    }
+
+    footer {
+      background: #f0f0f0;
+      color: #777;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 3px solid #FFD700;
+      font-size: 0.95rem;
+    }
+
+    footer .highlight {
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .flex {
+        flex-direction: column;
+      }
+
+      header h1 {
+        font-size: 2.3rem;
+      }
+
+      .text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hotel Management</h1>
+    <p>Training future hospitality leaders with skill, service, and global standards.</p>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>About the Program</h2>
+      <div class="flex">
+        <img src="https://via.placeholder.com/500x350/f9f9b5/333333?text=HM+Students" alt="Hotel Management Students">
+        <div class="text">
+          <h3>Launch Your <span class="blue">Hospitality Career</span></h3>
+          <p>[Brief intro: e.g., Our +2 Hotel Management program blends theory and hands-on training in food & beverage, front office, housekeeping, and customer service.]</p>
+          <p>[Mention affiliation, curriculum focus, and how it prepares students for diplomas, degrees, or direct jobs in hotels and tourism.]</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Why Choose Us</h2>
+      <div class="text">
+        <ul class="features">
+          <li><strong>Practical Training:</strong> [Well-equipped labs for mock service, cooking basics, and guest interaction.]</li>
+          <li><strong>Industry Exposure:</strong> [Internships, hotel visits, and tie-ups with local hospitality businesses.]</li>
+          <li><strong>Career Pathways:</strong> [Path to BHM, BBA in Hospitality, or jobs in 5-star hotels, resorts, and airlines.]</li>
+          <li><strong>Personality Development:</strong> [Focus on grooming, communication, and professional etiquette.]</li>
+        </ul>
+      </div>
+    </section>
+    <section class="cta">
+      <p style="color: #666; max-width: 600px; margin: 0 auto 20px;">
+        [Short invitation: e.g., "Begin your journey in the dynamic world of hospitality with expert guidance and real-world experience."]
+      </p>
+      <a href="#" class="btn">Apply Now</a>
+    </section>
+
+  </div>
+  <footer>
+    <p>&copy; 2025 Uniglobe College | <span class="highlight">Hotel Management</span> | Lalitpur, Nepal</p>
+  </footer>
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+
+</body>
+</html>

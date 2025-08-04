@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Routine - Uniglobe MIS</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Standard Sidebar -->
+    <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+      <h2>MIS</h2>
+      
+      <button id="toggleBtn" aria-label="Toggle sidebar" title="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <a href="ui.html">
+        <i class="fas fa-home" aria-hidden="true"></i> 
+        <span>Dashboard</span>
+      </a>
+      <a href="profile.html">
+        <i class="fas fa-user" aria-hidden="true"></i> 
+        <span>Profile</span>
+      </a>
+      <a href="fee.html">
+        <i class="fas fa-wallet" aria-hidden="true"></i> 
+        <span>Fee</span>
+      </a>
+      <a href="attendance.html">
+        <i class="fas fa-calendar-check" aria-hidden="true"></i> 
+        <span>Attendance</span>
+      </a>
+      <a href="assignment.html">
+        <i class="fas fa-book" aria-hidden="true"></i> 
+        <span>Assignments</span>
+      </a>
+      <a href="events.html">
+        <i class="fas fa-calendar-alt" aria-hidden="true"></i> 
+        <span>Events</span>
+      </a>
+      <a href="routine.html" class="active" aria-current="page">
+        <i class="fas fa-clock" aria-hidden="true"></i> 
+        <span>Routine</span>
+      </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main fade-in" id="mainContent" role="main">
+      <header>
+        <h1><i class="fas fa-clock"></i> Class Routine</h1>
+      </header>
+    <!-- Current Day Highlight -->
+      <section class="card current-day-card" id="currentDayCard" style="display: none;">
+        <h3><i class="fas fa-star"></i> Today's Schedule</h3>
+        <div id="todaySchedule"></div>
+      </section>
+
+      <!-- Control Panel -->
+      <section class="card control-panel" aria-labelledby="control-title">
+        <h3 id="control-title"><i class="fas fa-cog"></i> Schedule Options</h3>
+        
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="sectionSelect"><i class="fas fa-users"></i> Select Section</label>
+            <select id="sectionSelect" aria-describedby="section-help">
+              <option value="A">Section A</option>
+              <option value="B">Section B</option>
+              <option value="C">Section C</option>
+              <option value="D">Section D</option>
+              <option value="E">Section E</option>
+              <option value="F">Section F</option>
+            </select>
+            <small id="section-help">Choose your class section to view the schedule</small>
+          </div>
+          
+          <div class="control-group">
+            <label for="dayFilter"><i class="fas fa-calendar-day"></i> Filter by Day</label>
+            <select id="dayFilter">
+              <option value="all">All Days</option>
+              <option value="Sunday">Sunday</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <button id="printBtn" class="action-btn">
+              <i class="fas fa-print"></i> Print Schedule
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Schedule Table -->
+      <section class="card schedule-card" aria-labelledby="schedule-title">
+        <h3 id="schedule-title"><i class="fas fa-table"></i> Weekly Schedule</h3>
+        
+        <div class="table-controls">
+          <div class="legend">
+            <h4><i class="fas fa-palette"></i> Subject Legend</h4>
+            <div class="legend-items" id="legendItems"></div>
+          </div>
+        </div>
+
+        <div class="routine-container">
+          <div class="table-wrapper">
+            <table class="routine-table" id="routineTable" role="table" aria-label="Class routine table">
+              <thead>
+                <tr>
+                  <th scope="col"><i class="fas fa-calendar-day"></i> Day</th>
+                  <th scope="col"><i class="fas fa-door-open"></i> Room</th>
+                  <th scope="col"><i class="fas fa-users"></i> Section</th>
+                  <th scope="col">11:00-11:50</th>
+                  <th scope="col">11:50-12:35</th>
+                  <th scope="col">12:40-1:25</th>
+                  <th scope="col">1:25-2:10</th>
+                  <th scope="col">2:10-2:50</th>
+                  <th scope="col">2:50-3:35</th>
+                  <th scope="col">3:35-4:25</th>
+                  <th scope="col">4:30-5:15</th>
+                </tr>
+              </thead>
+              <tbody id="routineBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      
+  <script>
+    // Enhanced subject colors with better accessibility
+    const subjectColors = {
+      Physics: { bg: "#e3f2fd", text: "#1565c0", border: "#2196f3" },
+      Chemistry: { bg: "#e8f5e9", text: "#2e7d32", border: "#4caf50" },
+      Botany: { bg: "#fff8e1", text: "#f57f17", border: "#ffeb3b" },
+      Zoology: { bg: "#fce4ec", text: "#c2185b", border: "#e91e63" },
+      Math: { bg: "#f3e5f5", text: "#7b1fa2", border: "#9c27b0" },
+      English: { bg: "#e0f2f1", text: "#00695c", border: "#009688" },
+      Nepali: { bg: "#fff3e0", text: "#ef6c00", border: "#ff9800" },
+      Computer: { bg: "#e8eaf6", text: "#3f51b5", border: "#5c6bc0" }
+    };
+
+    const routineData = {
+      A: [
+        { day: "Sunday", room: "102", s1: "Physics", s2: "Chemistry", s3: "Botany", s4: "Physics", s5: "Nepali", s6: "Computer", s7: "Math", s8: "English" },
+        { day: "Monday", room: "102", s1: "English", s2: "Math", s3: "Chemistry", s4: "Physics", s5: "Botany", s6: "Zoology", s7: "Nepali", s8: "Computer" },
+        { day: "Tuesday", room: "102", s1: "Chemistry", s2: "Physics", s3: "Math", s4: "Botany", s5: "English", s6: "Computer", s7: "Nepali", s8: "Zoology" },
+        { day: "Wednesday", room: "102", s1: "Math", s2: "English", s3: "Physics", s4: "Chemistry", s5: "Botany", s6: "Nepali", s7: "Computer", s8: "Zoology" },
+        { day: "Thursday", room: "102", s1: "Physics", s2: "Computer", s3: "Chemistry", s4: "Math", s5: "English", s6: "Botany", s7: "Nepali", s8: "Zoology" },
+        { day: "Friday", room: "102", s1: "English", s2: "Physics", s3: "Chemistry", s4: "Botany", s5: "Math", s6: "Computer", s7: "Zoology", s8: "Nepali" }
+      ],
+      B: [
+        { day: "Sunday", room: "103", s1: "Nepali", s2: "Physics", s3: "Chemistry", s4: "Math", s5: "Zoology", s6: "English", s7: "Botany", s8: "Computer" },
+        { day: "Monday", room: "103", s1: "Math", s2: "Chemistry", s3: "Physics", s4: "Botany", s5: "English", s6: "Zoology", s7: "Nepali", s8: "Computer" },
+        { day: "Tuesday", room: "103", s1: "Physics", s2: "English", s3: "Math", s4: "Chemistry", s5: "Zoology", s6: "Nepali", s7: "Computer", s8: "Botany" },
+        { day: "Wednesday", room: "103", s1: "Chemistry", s2: "Physics", s3: "Botany", s4: "Math", s5: "English", s6: "Computer", s7: "Nepali", s8: "Zoology" },
+        { day: "Thursday", room: "103", s1: "English", s2: "Physics", s3: "Chemistry", s4: "Zoology", s5: "Math", s6: "Computer", s7: "Nepali", s8: "Botany" },
+        { day: "Friday", room: "103", s1: "Math", s2: "Nepali", s3: "Physics", s4: "English", s5: "Chemistry", s6: "Computer", s7: "Zoology", s8: "Botany" }
+      ],
+      C: [
+        { day: "Sunday", room: "201", s1: "Math", s2: "Physics", s3: "Chemistry", s4: "English", s5: "Botany", s6: "Zoology", s7: "Computer", s8: "Nepali" },
+        { day: "Monday", room: "201", s1: "English", s2: "Math", s3: "Physics", s4: "Chemistry", s5: "Zoology", s6: "Botany", s7: "Computer", s8: "Nepali" },
+        { day: "Tuesday", room: "201", s1: "Physics", s2: "Chemistry", s3: "Math", s4: "English", s5: "Botany", s6: "Zoology", s7: "Computer", s8: "Nepali" },
+        { day: "Wednesday", room: "201", s1: "Chemistry", s2: "Physics", s3: "English", s4: "Math", s5: "Zoology", s6: "Botany", s7: "Computer", s8: "Nepali" },
+        { day: "Thursday", room: "201", s1: "Math", s2: "Physics", s3: "Botany", s4: "Chemistry", s5: "English", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Friday", room: "201", s1: "English", s2: "Math", s3: "Physics", s4: "Chemistry", s5: "Zoology", s6: "Computer", s7: "Botany", s8: "Nepali" }
+      ],
+      D: [
+        { day: "Sunday", room: "202", s1: "English", s2: "Math", s3: "Physics", s4: "Chemistry", s5: "Zoology", s6: "Computer", s7: "Botany", s8: "Nepali" },
+        { day: "Monday", room: "202", s1: "Physics", s2: "Chemistry", s3: "English", s4: "Math", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Tuesday", room: "202", s1: "Math", s2: "English", s3: "Chemistry", s4: "Physics", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Wednesday", room: "202", s1: "Chemistry", s2: "Physics", s3: "English", s4: "Math", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Thursday", room: "202", s1: "English", s2: "Math", s3: "Physics", s4: "Chemistry", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Friday", room: "202", s1: "Math", s2: "Physics", s3: "English", s4: "Chemistry", s5: "Zoology", s6: "Computer", s7: "Botany", s8: "Nepali" }
+      ],
+      E: [
+        { day: "Sunday", room: "301", s1: "Chemistry", s2: "Physics", s3: "English", s4: "Math", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Monday", room: "301", s1: "Math", s2: "English", s3: "Chemistry", s4: "Physics", s5: "Botany", s6: "Zoology", s7: "Computer", s8: "Nepali" },
+        { day: "Tuesday", room: "301", s1: "English", s2: "Physics", s3: "Math", s4: "Chemistry", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Wednesday", room: "301", s1: "Physics", s2: "Chemistry", s3: "English", s4: "Math", s5: "Zoology", s6: "Botany", s7: "Computer", s8: "Nepali" },
+        { day: "Thursday", room: "301", s1: "Math", s2: "Chemistry", s3: "Physics", s4: "English", s5: "Botany", s6: "Zoology", s7: "Computer", s8: "Nepali" },
+        { day: "Friday", room: "301", s1: "English", s2: "Physics", s3: "Chemistry", s4: "Math", s5: "Zoology", s6: "Botany", s7: "Computer", s8: "Nepali" }
+      ],
+      F: [
+        { day: "Sunday", room: "302", s1: "Botany", s2: "Physics", s3: "Chemistry", s4: "Zoology", s5: "English", s6: "Computer", s7: "Math", s8: "Nepali" },
+        { day: "Monday", room: "302", s1: "Physics", s2: "Math", s3: "English", s4: "Chemistry", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Tuesday", room: "302", s1: "Math", s2: "Chemistry", s3: "Physics", s4: "English", s5: "Zoology", s6: "Botany", s7: "Computer", s8: "Nepali" },
+        { day: "Wednesday", room: "302", s1: "Chemistry", s2: "Physics", s3: "Math", s4: "English", s5: "Botany", s6: "Computer", s7: "Zoology", s8: "Nepali" },
+        { day: "Thursday", room: "302", s1: "Physics", s2: "English", s3: "Chemistry", s4: "Math", s5: "Botany", s6: "Zoology", s7: "Computer", s8: "Nepali" },
+        { day: "Friday", room: "302", s1: "English", s2: "Math", s3: "Physics", s4: "Chemistry", s5: "Zoology", s6: "Computer", s7: "Botany", s8: "Nepali" }
+      ]
+    };
+
+    // Time slots for better reference
+    const timeSlots = [
+      "11:00-11:50", "11:50-12:35", "12:40-1:25", "1:25-2:10",
+      "2:10-2:50", "2:50-3:35", "3:35-4:25", "4:30-5:15"
+    ];
+
+    // Generate legend
+    function generateLegend() {
+      const legendContainer = document.getElementById('legendItems');
+      legendContainer.innerHTML = '';
+      
+      Object.entries(subjectColors).forEach(([subject, colors]) => {
+        const legendItem = document.createElement('div');
+        legendItem.className = 'legend-item';
+        legendItem.innerHTML = `
+          <div class="legend-color" style="background: ${colors.bg}; border: 2px solid ${colors.border};"></div>
+          <span style="color: ${colors.text};">${subject}</span>
+        `;
+        legendContainer.appendChild(legendItem);
+      });
+    }
+
+    // Render routine table
+    function renderRoutine(section, filterDay = 'all') {
+      const tbody = document.getElementById("routineBody");
+      tbody.innerHTML = "";
+      
+      const data = routineData[section];
+      const filteredData = filterDay === 'all' ? data : data.filter(row => row.day === filterDay);
+      
+      filteredData.forEach(row => {
+        const subjects = [row.s1, row.s2, row.s3, row.s4, row.s5, row.s6, row.s7, row.s8];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="day-cell">
+            <i class="fas fa-calendar-day"></i>
+            <strong>${row.day}</strong>
+          </td>
+          <td class="room-cell">
+            <i class="fas fa-door-open"></i>
+            ${row.room}
+          </td>
+          <td class="section-cell">
+            <i class="fas fa-users"></i>
+            ${section}
+          </td>
+          ${subjects.map(subject => {
+            const colors = subjectColors[subject];
+            return `<td class="subject-cell" style="background: ${colors.bg}; color: ${colors.text}; border-left: 3px solid ${colors.border};" title="${subject}">${subject}</td>`;
+          }).join('')}
+        `;
+        tbody.appendChild(tr);
+      });
+      
+      // Highlight current day
+      highlightCurrentDay();
+    }
+
+    // Highlight current day
+    function highlightCurrentDay() {
+      const today = new Date().getDay();
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const todayName = dayNames[today];
+      
+      const rows = document.querySelectorAll('#routineBody tr');
+      rows.forEach(row => {
+        const dayCell = row.querySelector('.day-cell strong');
+        if (dayCell && dayCell.textContent === todayName) {
+          row.classList.add('current-day-row');
+          showTodaySchedule(row, todayName);
+        }
+      });
+    }
+
+    // Show today's schedule separately
+    function showTodaySchedule(row, dayName) {
+      const currentDayCard = document.getElementById('currentDayCard');
+      const todaySchedule = document.getElementById('todaySchedule');
+      
+      if (row) {
+        currentDayCard.style.display = 'block';
+        const subjects = Array.from(row.querySelectorAll('.subject-cell')).map(cell => cell.textContent);
+        
+        todaySchedule.innerHTML = `
+          <div class="today-schedule-grid">
+            ${subjects.map((subject, index) => {
+              const colors = subjectColors[subject];
+              return `
+                <div class="time-slot" style="background: ${colors.bg}; border-left: 3px solid ${colors.border};">
+                  <div class="time">${timeSlots[index]}</div>
+                  <div class="subject" style="color: ${colors.text};">${subject}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+    }
+
+    // Generate statistics
+    function generateStatistics(section) {
+      const data = routineData[section];
+      const subjectCount = {};
+      
+      data.forEach(row => {
+        [row.s1, row.s2, row.s3, row.s4, row.s5, row.s6, row.s7, row.s8].forEach(subject => {
+          subjectCount[subject] = (subjectCount[subject] || 0) + 1;
+        });
+      });
+
+      const statsGrid = document.getElementById('statsGrid');
+      statsGrid.innerHTML = '';
+      
+      Object.entries(subjectCount).forEach(([subject, count]) => {
+        const colors = subjectColors[subject];
+        const statCard = document.createElement('div');
+        statCard.className = 'stat-card';
+        statCard.innerHTML = `
+          <div class="stat-header" style="background: ${colors.bg}; border-left: 3px solid ${colors.border};">
+            <h4 style="color: ${colors.text};">${subject}</h4>
+          </div>
+          <div class="stat-value">${count}</div>
+          <div class="stat-label">classes per week</div>
+        `;
+        statsGrid.appendChild(statCard);
+      });
+    }
+
+    // Initialize page
+    function initializePage() {
+      generateLegend();
+      renderRoutine("A");
+      generateStatistics("A");
+    }
+
+    // Event listeners
+    document.getElementById("sectionSelect").addEventListener("change", function() {
+      const section = this.value;
+      const dayFilter = document.getElementById("dayFilter").value;
+      renderRoutine(section, dayFilter);
+      generateStatistics(section);
+    });
+
+    document.getElementById("dayFilter").addEventListener("change", function() {
+      const section = document.getElementById("sectionSelect").value;
+      const dayFilter = this.value;
+      renderRoutine(section, dayFilter);
+    });
+
+    // Print functionality
+    document.getElementById("printBtn").addEventListener("click", function() {
+      window.print();
+    });
+
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+
+    // Initialize on load
+    window.addEventListener('load', initializePage);
+  </script>
+
+  <style>
+    /* Page-specific styles for routine */
+    .control-panel .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .control-group label {
+      font-weight: 600;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-group select {
+      padding: 10px 12px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-small);
+      background: var(--surface-color);
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .control-group select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.1);
+    }
+
+    .control-group small {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: var(--radius-small);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: fit-content;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .current-day-card {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(52, 152, 219, 0.1));
+      border: 2px solid var(--success-color);
+    }
+
+    .today-schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .time-slot {
+      padding: 15px;
+      border-radius: var(--radius-small);
+      transition: all var(--transition-fast);
+    }
+
+    .time-slot:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .time-slot .time {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      opacity: 0.8;
+    }
+
+    .time-slot .subject {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .legend {
+      margin-bottom: 20px;
+    }
+
+    .legend h4 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    .routine-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface-color);
+      border-radius: var(--radius-medium);
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+    }
+
+    .routine-table th {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      color: white;
+      padding: 15px 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .routine-table td {
+      padding: 12px 10px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      transition: all var(--transition-fast);
+    }
+
+    .day-cell, .room-cell, .section-cell {
+      font-weight: 600;
+      background: rgba(10, 61, 145, 0.05) !important;
+      color: var(--primary-color) !important;
+    }
+
+    .subject-cell {
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .subject-cell:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+
+    .current-day-row {
+      background: rgba(46, 204, 113, 0.1);
+      border: 2px solid var(--success-color);
+    }
+
+    .current-day-row .day-cell {
+      background: var(--success-color) !important;
+      color: white !important;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .stat-card {
+      background: var(--surface-color);
+      border-radius: var(--radius-small);
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+      transition: all var(--transition-fast);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .stat-header {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .stat-header h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 10px;
+      color: var(--primary-color);
+    }
+
+    .stat-label {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .controls-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }}

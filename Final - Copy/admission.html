@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admission | Uniglobe SS/College, Kamaladi</title>
+<style>
+/* === Theme Colors === */
+:root {
+--primary-blue: #0056b3;
+--primary-green: #28a745;
+--blue-light: #e3f2fd;
+--green-light: #e8f5e9;
+--text-dark: #212529;
+--text-light: #ffffff;
+--border: #dee2e6;
+--shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+--accent-gradient: linear-gradient(135deg, #0056b3, #28a745);
+}
+
+/* === Base Styles === */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+background: white;
+color: var(--text-dark);
+line-height: 1.7;
+}
+
+.container {
+max-width: 1000px;
+margin: 30px auto;
+padding: 35px 40px;
+background: white;
+border-radius: 16px;
+box-shadow: var(--shadow);
+border: 1px solid var(--border);
+}
+
+header {
+text-align: center;
+margin-bottom: 35px;
+}
+
+.logo {
+width: 160px;
+height: auto;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+transition: transform 0.3s ease;
+}
+
+.logo:hover {
+transform: scale(1.05);
+}
+
+h1 {
+color: var(--primary-blue);
+font-size: 2.4em;
+margin: 15px 0 8px;
+font-weight: 700;
+}
+
+.subtitle {
+color: var(--primary-green);
+font-size: 1.2em;
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+p.description {
+color: #555;
+font-size: 1.1em;
+margin-top: 10px;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* === Form Styling === */
+.form-group {
+margin-bottom: 22px;
+}
+
+label {
+display: block;
+margin-bottom: 8px;
+font-weight: 600;
+color: var(--primary-blue);
+font-size: 1.05em;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+width: 100%;
+padding: 12px 15px;
+border: 1.5px solid var(--border);
+border-radius: 8px;
+font-size: 16px;
+transition: all 0.3s ease;
+background: #fafafa;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+outline: none;
+border-color: var(--primary-blue);
+background: white;
+box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+textarea {
+resize: vertical;
+min-height: 90px;
+}
+
+/* === Radio & Checkbox Styling === */
+.radio-group, .checkbox-group {
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
+margin-top: 8px;
+}
+
+.radio-group label,
+.checkbox-group label {
+font-weight: normal;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+accent-color: var(--primary-blue);
+transform: scale(1.2);
+}
+
+/* === Stream Sections (Colored Cards) === */
+.stream-section {
+padding: 20px;
+border-radius: 12px;
+font-size: 1.05em;
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+border-left: 5px solid var(--primary-blue);
+animation: fadeIn 0.4s ease;
+}
+
+#science-subjects {
+background-color: var(--blue-light);
+border-left-color: var(--primary-blue);
+}
+
+#management-subjects {
+background-color: var(--green-light);
+border-left-color: var(--primary-green);
+}
+
+#law-info {
+background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+border-left-color: #6c757d;
+}
+
+#law-info p {
+color: #444;
+font-style: italic;
+}
+
+/* === Submit Button === */
+.btn-submit {
+background: var(--accent-gradient);
+color: var(--text-light);
+font-size: 18px;
+font-weight: 600;
+padding: 15px 40px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+display: block;
+margin: 40px auto 15px;
+width: 260px;
+box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(0, 86, 179, 0.4);
+}
+
+/* === Section Headers === */
+h2 {
+color: var(--primary-blue);
+font-size: 1.6em;
+margin: 30px 0 15px 0;
+padding-bottom: 8px;
+border-bottom: 3px solid var(--primary-green);
+display: inline-block;
+border-radius: 4px;
+}
+
+/* === Footer === */
+footer {
+text-align: center;
+margin-top: 50px;
+padding-top: 20px;
+color: #666;
+font-size: 0.95em;
+border-top: 1px solid #eee;
+}
+
+footer a {
+color: var(--primary-blue);
+text-decoration: none;
+font-weight: 600;
+}
+
+footer a:hover {
+text-decoration: underline;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+.container {
+margin: 15px;
+padding: 25px 20px;
+}
+
+h1 {
+font-size: 2em;
+}
+
+.subtitle {
+font-size: 1.1em;
+}
+
+.radio-group, .checkbox-group {
+flex-direction: column;
+gap: 10px;
+}
+
+.btn-submit {
+width: 100%;
+font-size: 1.1em;
+}
+}
+
+@media (min-width: 992px) {
+.container {
+padding: 50px 60px;
+}
+
+.form-group {
+margin-bottom: 25px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header>
+<img src="Uniglobelogo.png" alt="Uniglobe College Logo" class="logo " />
+<style>
+    .logo {
+  width: 200px;
+  height: auto;
+  border-radius: 0;       /* removes rounded border */
+  box-shadow: none;       /* removes shadow/border effect */
+  transition: transform 0.3s ease;
+}
+
+</style>
+<h1>Admission Application</h1>
+<p class="subtitle">Uniglobe SS/College, Kamaladi</p>
+<p class="description">
+Join Nepal’s growing academic community with excellence in Science, Management, and Law.
+Fill out the form below to begin your journey with us.
+</p>
+</header>
+
+<form action="#" method="POST">
+
+<!-- === Personal Information === -->
+<h2>Candidate Information</h2>
+
+<div class="form-group">
+<label for="fullname">Full Name</label>
+<input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required />
+</div>
+
+<div class="form-group">
+<label for="dob">Date of Birth</label>
+<input type="date" id="dob" name="dob" required />
+</div>
+
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" placeholder="e.g. 98XXXXXXXX" required />
+</div>
+
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="you@example.com" required />
+</div>
+
+<div class="form-group">
+<label for="current-school">Current School</label>
+<input type="text" id="current-school" name="current_school" placeholder="Name of your current school" required />
+</div>
+
+<div class="form-group">
+<label for="parent-name">Parent/Guardian Name</label>
+<input type="text" id="parent-name" name="parent_name" placeholder="Full name of parent or guardian" required />
+</div>
+
+<div class="form-group">
+<label for="parent-phone">Parent Contact Number</label>
+<input type="tel" id="parent-phone" name="parent_phone" placeholder="e.g. 98XXXXXXXX" required />
+</div>
+
+<!-- === Academic Stream === -->
+<h2>Academic Stream</h2>
+
+<div class="form-group">
+<label>Select Stream</label>
+<div class="radio-group">
+<input type="radio" id="science" name="stream" value="science" onchange="toggleSubjects()">
+<label for="science">Science</label>
+
+<input type="radio" id="management" name="stream" value="management" onchange="toggleSubjects()">
+<label for="management">Management</label>
+
+<input type="radio" id="law" name="stream" value="law" onchange="toggleSubjects()">
+<label for="law">Law</label>
+</div>
+</div>
+
+<!-- Science Subjects -->
+<div id="science-subjects" class="stream-section" style="display: none;">
+<label>Select Subject(s):</label>
+<div class="checkbox-group">
+<input type="checkbox" id="bio" name="science_subjects" value="biology">
+<label for="bio">📚 Biology</label>
+
+<input type="checkbox" id="comp" name="science_subjects" value="computer">
+<label for="comp">💻 Computer Science</label>
+</div>
+</div>
+
+<!-- Management Subjects -->
+<div id="management-subjects" class="stream-section" style="display: none;">
+<label>Select Optional Subject(s):</label>
+<div class="checkbox-group">
+<input type="checkbox" id="maths" name="management_subjects" value="optional_maths">
+<label for="maths">➕ Optional Mathematics</label>
+
+<input type="checkbox" id="business" name="management_subjects" value="business_studies">
+<label for="business">📊 Business Studies</label>
+</div>
+</div>
+
+<!-- Law Info -->
+<div id="law-info" class="stream-section" style="display: none;">
+<p>📘 You've chosen the <strong>Law</strong> stream. Our program emphasizes critical thinking, ethics, and foundational legal studies for future leaders.</p>
+</div>
+
+<!-- === Additional Info === -->
+<h2>Additional Information</h2>
+
+<div class="form-group">
+<label for="why-uniglobe">Why do you want to join Uniglobe?</label>
+<textarea id="why-uniglobe" name="why_uniglobe" rows="4" placeholder="We'd love to know your motivation..."></textarea>
+</div>
+
+<div class="form-group">
+<label for="achievements">Achievements / Special Skills</label>
+<textarea id="achievements" name="achievements" rows="3" placeholder="e.g., Debate Winner, Science Fair, Sports, Art..."></textarea>
+</div>
+
+<!-- === Declaration === -->
+<div class="form-group">
+<input type="checkbox" id="declaration" name="declaration" required>
+<label for="declaration">I confirm that all information provided is true and accurate.</label>
+</div>
+
+<button type="submit" class="btn-submit">🚀 Submit Application</button>
+
+</form>
+
+<footer>
+<p>For inquiries, contact: <a href="mailto:admissions@uniglobesscollege.edu.np">admissions@uniglobesscollege.edu.np</a></p>
+<p><strong>📞 +977-1-4441234</strong> | Kamaladi, Kathmandu, Nepal</p>
+<p>&copy; 2025 Uniglobe SS/College. <strong>Bringing the Best Together</strong></p>
+</footer>
+</div>
+
+<!-- === JavaScript for Dynamic Fields === -->
+<script>
+function toggleSubjects() {
+// Hide all
+document.getElementById('science-subjects').style.display = 'none';
+document.getElementById('management-subjects').style.display = 'none';
+document.getElementById('law-info').style.display = 'none';
+
+// Show relevant
+if (document.getElementById('science').checked) {
+document.getElementById('science-subjects').style.display = 'block';
+} else if (document.getElementById('management').checked) {
+document.getElementById('management-subjects').style.display = 'block';
+} else if (document.getElementById('law').checked) {
+document.getElementById('law-info').style.display = 'block';
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard - Uniglobe MIS</title>
+  <link rel="stylesheet" href="ui.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Center announcements text */
+    .center-text {
+      text-align: center;
+      font-size: 1.1em;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn"><i class="fas fa-bars"></i></button>
+    <a href="teacher.html" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="profile-info">
+      <img id="profilePic" class="profile-pic" src="default-profile.png" alt="Profile">
+      <div>
+        <span id="profileName">Teacher</span><br>
+        <small id="profileClass">Subject</small>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Teacher Dashboard</h1>
+
+    <div class="grid">
+      <div class="card"><h3>Total Students</h3><p>120</p></div>
+      <div class="card"><h3>Pending Assignments to Check</h3><p>15</p></div>
+      <div class="card"><h3>Upcoming Classes</h3><p>5</p></div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3 style="text-align:center;">Announcements</h3>
+      <p class="center-text">Dedicated Teacher</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="Uniglobelogo.png" alt="Logo" class="footer-logo"> © Uniglobe MIS 2025
+  </footer>
+
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Dynamic profile info
+    const name = sessionStorage.getItem('userName');
+    const userClass = sessionStorage.getItem('userClass');
+    const pic = sessionStorage.getItem('profilePic');
+    if (name) document.getElementById('profileName').textContent = name;
+    if (userClass) document.getElementById('profileClass').textContent = userClass;
+    if (pic) document.getElementById('profilePic').src = pic;
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.href = 'login.html';
+    });
+
+    // Dark Mode Toggle (localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️ Light Mode';
+    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️ Light Mode';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard - Uniglobe MIS</title>
+  <link rel="stylesheet" href="ui.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Center announcements text */
+    .center-text {
+      text-align: center;
+      font-size: 1.1em;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn"><i class="fas fa-bars"></i></button>
+    <a href="teacher.html" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="profile-info">
+      <img id="profilePic" class="profile-pic" src="default-profile.png" alt="Profile">
+      <div>
+        <span id="profileName">Teacher</span><br>
+        <small id="profileClass">Subject</small>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Teacher Dashboard</h1>
+
+    <div class="grid">
+      <div class="card"><h3>Total Students</h3><p>120</p></div>
+      <div class="card"><h3>Pending Assignments to Check</h3><p>15</p></div>
+      <div class="card"><h3>Upcoming Classes</h3><p>5</p></div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3 style="text-align:center;">Announcements</h3>
+      <p class="center-text">Dedicated Teacher</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="Uniglobelogo.png" alt="Logo" class="footer-logo"> © Uniglobe MIS 2025
+  </footer>
+
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Dynamic profile info
+    const name = sessionStorage.getItem('userName');
+    const userClass = sessionStorage.getItem('userClass');
+    const pic = sessionStorage.getItem('profilePic');
+    if (name) document.getElementById('profileName').textContent = name;
+    if (userClass) document.getElementById('profileClass').textContent = userClass;
+    if (pic) document.getElementById('profilePic').src = pic;
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.href = 'login.html';
+    });
+
+    // Dark Mode Toggle (localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️ Light Mode';
+    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️ Light Mode';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>

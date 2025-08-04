@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MIS Dashboard - Uniglobe School</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="ui.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+</head>
+
+<body>
+  
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <h2>MIS</h2>
+    <button id="toggleBtn"><i class="fas fa-bars"></i></button>
+    <a href="ui.html"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+    <a href="attendance.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+    <a href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+    <a href="routine.html"><i class="fas fa-clock"></i> <span>Routine</span></a>
+
+
+    </div>
+    <main class="main" id="mainContent">
+      
+      <h1>Student Dashboard</h1>
+
+      <div class="grid">
+        <div class="card">
+          <div class="calendar-nav">
+            <button onclick="changeMonth(-1)">←</button>
+            <h3 id="monthYear"></h3>
+            <button onclick="changeMonth(1)">→</button>
+          </div>
+          <div class="calendar" id="calendarDays"></div>
+          <p style="margin-top: 15px; font-size: 0.9rem;">
+            <strong>Today:</strong> Chemistry Test<br>
+            <strong>Soon:</strong> Mid-Term Exams start Aug 25
+          </p>
+        </div>
+        <div class="card right-panel">
+          <h3>Hello, Raymond Thapa!</h3>
+          <p><small>Grade 11 - Science | ID: UG11S2025</small></p>
+
+          <h3><i class="fas fa-chart-pie"></i> Attendance</h3>
+          <div class="attendance">
+            <div><span class="present">88%</span> Present</div>
+            <div><span class="absent">12%</span> Absent</div>
+          </div>
+
+          <h3><i class="fas fa-chalkboard-teacher"></i> Teachers</h3>
+          <div class="teacher">
+            <h4>Com. English</h4>
+            <p>Mr. Tika Datta Subedi</p>
+            <small>tikasubedi@uniglobecollege.edu.np</small>
+          </div>
+          <div class="teacher">
+            <h4>Chemistry</h4>
+            <p>Mr. Jaya Ram Ghimire</p>
+            <small>jayaramghimire@uniglobecollege.edu.np</small>
+          </div>
+          <div class="teacher">
+            <h4>Computer</h4>
+            <p>Mr. Navin Gurung</p>
+            <small>Navingurung@uniglobecollege.edu.np</small>
+          </div>
+          <div class="teacher">
+            <h4>Physics</h4>
+            <p> Mr. Devendra Khadka</p>
+            <small>devendrakhadka@uniglobecollege.edu.np</small>
+          </div>
+          <div class="teacher">
+            <h4>Com. Nepali</h4>
+            <p>Mr. Chudamani Pandey</p>
+            <small>chudamanipandey@uniglobecollege.edu.np</small>
+          </div>
+          <div class="teacher">
+            <h4>Com. Mathematics</h4>
+            <p>Mr. Bhavanand Chaudhary</p>
+            <small>bhavanandchaudary@uniglobecollege.edu.np</small>
+          </div>
+
+          <h3><i class="fas fa-tasks"></i> Assignments</h3>
+          <div class="assignment">
+            <strong>Organic Chemistry</strong>
+            <small>Due: Aug 20</small>
+          </div>
+          <div class="assignment">
+            <strong>English Essay</strong>
+            <small>Due: Aug 22</small>
+          </div>
+
+          <h3><i class="fas fa-bullhorn"></i> News</h3>
+          <div class="news">
+            <strong>Sports Day - Sept 10</strong>
+            <small>Forms available at office</small>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    /* Sidebar toggle */
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    });
+
+    /* Calendar Script */
+    const calendarDays = document.getElementById('calendarDays');
+    const monthYear = document.getElementById('monthYear');
+    let currentDate = new Date();
+
+    function renderCalendar(date) {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const today = new Date();
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      calendarDays.innerHTML = '';
+
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      days.forEach(day => {
+        const div = document.createElement('div');
+        div.className = 'day-header';
+        div.innerText = day;
+        calendarDays.appendChild(div);
+      });
+
+      for (let i = 0; i < firstDay; i++) {
+        const blank = document.createElement('div');
+        calendarDays.appendChild(blank);
+      }
+
+      for (let d = 1; d <= lastDate; d++) {
+        const dateObj = new Date(year, month, d);
+        const div = document.createElement('div');
+        div.className = 'date';
+        if (dateObj.toDateString() === today.toDateString()) div.classList.add('today');
+        if (dateObj.getDay() === 6) div.classList.add('saturday');
+        div.innerText = d;
+        calendarDays.appendChild(div);
+      }
+
+      const monthName = date.toLocaleString('default', { month: 'long' });
+      monthYear.innerText = `${monthName} ${year}`;
+    }
+
+    function changeMonth(offset) {
+      currentDate.setMonth(currentDate.getMonth() + offset);
+      renderCalendar(currentDate);
+    }
+
+    renderCalendar(currentDate);
+  </script>
+</body>
+</html>

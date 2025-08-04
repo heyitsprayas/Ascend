@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Uniglobe</title>
+  <link rel="stylesheet" href="login.css">
+  <style>
+    .toggle-password {
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 0.85rem;
+      color: #0A3D91;
+      cursor: pointer;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+    .back-home {
+      display: block;
+      margin-top: 12px;
+      text-align: center;
+      text-decoration: none;
+      padding: 10px;
+      background: #f1f1f1;
+      color: #0A3D91;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .back-home:hover {
+      background: #e2e2e2;
+      color: #06306a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <img src="Uniglobelogo.png" alt="Uniglobe Logo">
+    </div>
+    <form class="login-form" onsubmit="handleLogin(event)">
+      <h2>Login</h2>
+      
+      <div class="input-group">
+        <label for="role">Role</label>
+        <select id="role" required>
+          <option value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      
+      <div class="input-group" id="class-group">
+        <label for="class">Class</label>
+        <select id="class">
+          <option value="">Select Class</option>
+          <option value="Grade 11">Grade 11</option>
+          <option value="Grade 12">Grade 12</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label for="email">Username</label>
+        <input type="text" id="email" placeholder="Enter your username" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <button type="button" class="toggle-password" onclick="togglePassword()">Show</button>
+      </div>
+
+      <div class="remember-me">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe">Remember Me</label>
+      </div>
+      
+      <button class="login-btn" type="submit">Login</button>
+      <a href="index.html" class="back-home">← Back to Home</a>
+
+      <p class="error-message" id="error-message" style="color:red;text-align:center;"></p>
+    </form>
+  </div>
+
+  <script>
+    const users = {
+      student: { "student1": "pass123", "student2": "mypassword" },
+      teacher: { "teacher1": "teachpass" },
+      admin:   { "admin1": "adminpass" }
+    };
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const btn = document.querySelector('.toggle-password');
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        btn.textContent = 'Hide';
+      } else {
+        passwordField.type = 'password';
+        btn.textContent = 'Show';
+      }
+    }
+    window.onload = () => {
+      const savedUser = localStorage.getItem('rememberedUser');
+      if (savedUser) {
+        document.getElementById('email').value = savedUser;
+        document.getElementById('rememberMe').checked = true;
+      }
+    };
+
+    function handleLogin(e) {
+      e.preventDefault();
+
+      const role = document.getElementById('role').value;
+      const name = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const userClass = document.getElementById('class').value;
+      const errorMsg = document.getElementById('error-message');
+      const remember = document.getElementById('rememberMe').checked;
+
+      if (!role || !name || !password) {
+        errorMsg.textContent = 'Please fill in all fields';
+        return;
+      }
+      if (!users[role] || !users[role][name] || users[role][name] !== password) {
+        errorMsg.textContent = 'Invalid username or password';
+        return;
+      }
+      if (remember) {
+        localStorage.setItem('rememberedUser', name);
+      } else {
+        localStorage.removeItem('rememberedUser');
+      }
+      sessionStorage.setItem('userRole', role);
+      sessionStorage.setItem('userName', name);
+      sessionStorage.setItem('userClass', userClass);
+      window.location.href = 'ui.html';
+    }
+  </script>
+</body>
+</html>

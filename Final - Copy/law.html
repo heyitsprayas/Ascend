@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Law Program - Uniglobe College</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background: #fcfcfc;
+      overflow-x: hidden;
+    }
+
+    /* Header - Clean & Bright */
+    header {
+      background: white;
+      color: #333;
+      text-align: center;
+      padding: 70px 20px 50px;
+      border-bottom: 4px solid #FFD700; /* Gold */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #222;
+      letter-spacing: -0.5px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #666;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    section {
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #FFD700; /* Yellow */
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #1e9fff; /* Blue */
+      margin: 10px auto;
+    }
+
+    /* Text & Image Layout */
+    .flex {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .flex img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      border: 2px solid #eee;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1);
+    }
+
+    .text {
+      flex: 1;
+      color: #555;
+    }
+
+    .text h3 {
+      font-size: 1.6rem;
+      color: #1e9fff; /* Blue */
+      margin-bottom: 12px;
+    }
+
+    .text p {
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    /* Highlight Colors */
+    .yellow { color: #FFD700; }
+    .blue { color: #1e9fff; }
+    .green { color: #4CAF50; }
+
+    /* Features List */
+    .features {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .features li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .features li:before {
+      content: "●";
+      color: #FFD700;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* Call to Action */
+    .cta {
+      text-align: center;
+      margin: 60px 0 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      background: #FFD700; /* Yellow */
+      color: #333;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.15rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.25);
+    }
+
+    .btn:hover {
+      background: #ffca00;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(255, 215, 0, 0.35);
+    }
+
+    footer {
+      background: #f0f0f0;
+      color: #777;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 3px solid #FFD700;
+      font-size: 0.95rem;
+    }
+
+    footer .highlight {
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .flex {
+        flex-direction: column;
+      }
+
+      header h1 {
+        font-size: 2.3rem;
+      }
+
+      .text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">Uniglobe School/College</div>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="#programs">Programs</a></li>
+          <li class="nav-item"><a href="#admissions">Admissions</a></li>
+          <li class="nav-item"><a href="#events">Events</a></li>
+          <li class="nav-item"><a href="login.html" target="_blank">MIS</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <header>
+    <h1>Law Program</h1>
+    <p>Shaping ethical, confident, and knowledgeable future legal professionals.</p>
+  </header>
+  <div class="container">
+    <section>
+      <h2>About the Program</h2>
+      <div class="flex">
+        <img src="RSN05488-1.png" alt="Law Students">
+        <div class="text">
+          <h3>A Strong <span class="blue">Foundation</span> in Law</h3>
+          <p>Uniglobe Secondary School’s +2 Law program ignites a passion for justice in aspiring legal minds. Fueled by a desire to understand the intricate workings of the legal system, students start on a comprehensive journey that equips them with the foundation to thrive in the dynamic world of law. Led by seasoned legal professionals with real-world courtroom experience, the program delves beyond mere theory. Students actively engage with the law through interactive case studies, mock trials, and legal simulations, solidifying their understanding and fostering practical application.
+<br>
+Uniglobe’s modern classrooms provide a stimulating environment for legal exploration. Here, students hone their critical thinking and analytical skills through thought-provoking debates and collaborative projects. They delve into the art of persuasive communication, strategic legal reasoning, and the importance of upholding ethical principles – hallmarks of a successful legal career. As students navigate the complexities of constitutional law, criminal justice, and legal procedure, they gain a solid foundation for pursuing a law degree and becoming the next generation of advocates and legal minds.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose -->
+    <section>
+      <h2>Course Composition in +2 Law</h2>
+      <div class="text">
+        <ul class="features">
+          <p> Comp. English
+Comp. Nepali<br>
+Social Studies and Life Skills Education<br>
+Jurisprudence and Legal Theories<br>
+Procedural Law<br>
+Constitutional Law</p>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <p style="color: #666; max-width: 600px; margin: 0 auto 20px;">
+        [Short call-to-action: e.g., "Start your journey toward a meaningful career in law with quality education and mentorship."]
+      </p>
+      <a href="#" class="btn">Apply Now</a>
+    </section>
+
+  </div>
+  <section id="programs" class="section">
+    <div class="container">
+      <h2 class="section-title animate">Academic Programs</h2>
+      <div class="cards">
+        <div class="card animate">
+          <div class="card-img" style="background: linear-gradient(45deg, #004e92, #000428);">Science Stream</div>
+          <div class="card-body">
+            <h3>Science</h3>
+            <p>Physics, Chemistry, Biology, and Mathematics for future doctors, engineers, and scientists.</p>
+            <a href="science.html" class="btn">Learn More</a>
+          </div>
+        </div>
+        <div class="card animate">
+          <div class="card-img" style="background: linear-gradient(45deg, #1e3c72, #2a5298);">Management Stream</div>
+          <div class="card-body">
+            <h3>Management</h3>
+            <p>Leadership, entrepreneurship, and business skills for a successful career in commerce.</p>
+            <a href="management.html" class="btn">Learn More</a>
+          </div>
+        </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Uniglobe College | <span class="highlight">Law Department</span> | Lalitpur, Nepal</p>
+  </footer>
+
+  <!-- Scroll Animation -->
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

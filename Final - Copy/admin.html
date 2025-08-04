@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Uniglobe MIS</title>
+  <link rel="stylesheet" href="ui.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>MIS</h2>
+    <button id="toggleBtn"><i class="fas fa-bars"></i></button>
+    <a href="admin.html" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    <a href="student.html"><i class="fas fa-user-graduate"></i> <span>Students</span></a>
+    <a href="teacher.html"><i class="fas fa-chalkboard-teacher"></i> <span>Teachers</span></a>
+    <a href="report.html"><i class="fas fa-chart-bar"></i> <span>Reports</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="profile-info">
+      <img id="profilePic" class="profile-pic" src="default-profile.png" alt="Profile">
+      <div>
+        <span id="profileName">Admin</span><br>
+        <small id="profileClass">System</small>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Admin Dashboard</h1>
+
+    <div class="grid">
+      <div class="card"><h3>Total Students</h3><p>350</p></div>
+      <div class="card"><h3>Total Teachers</h3><p>25</p></div>
+      <div class="card"><h3>Reports Pending</h3><p>12</p></div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>System Overview</h3>
+      <p>Manage users, view reports, and monitor school performance.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="Uniglobelogo.png" alt="Logo" class="footer-logo"> © Uniglobe MIS 2025
+  </footer>
+
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Dynamic profile info
+    const name = sessionStorage.getItem('userName');
+    const pic = sessionStorage.getItem('profilePic');
+    if (name) document.getElementById('profileName').textContent = name;
+    if (pic) document.getElementById('profilePic').src = pic;
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.href = 'login.html';
+    });
+
+    // Dark Mode Toggle (localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️ Light Mode';
+    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️ Light Mode';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>

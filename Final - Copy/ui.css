@@ -1,0 +1,702 @@
+/* ============================================
+   UNIGLOBE MIS - Enhanced UI Stylesheet
+   ============================================ */
+
+/* CSS Custom Properties */
+:root {
+  --primary-color: #0A3D91;
+  --primary-light: #1456c2;
+  --accent-color: #FFD600;
+  --accent-hover: #ffce00;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --warning-color: #f39c12;
+  --background-color: #f7f9fc;
+  --surface-color: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #7f8c8d;
+  --border-color: #e9ecef;
+  --shadow-light: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-medium: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-strong: 0 8px 24px rgba(0,0,0,0.15);
+  --radius-small: 6px;
+  --radius-medium: 10px;
+  --radius-large: 12px;
+  --sidebar-width: 220px;
+  --sidebar-collapsed: 70px;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background var(--transition-medium);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   LAYOUT CONTAINERS
+   ============================================ */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 20px;
+  max-width: 1200px;
+  transition: margin-left var(--transition-medium);
+  min-height: 100vh;
+}
+
+.main.collapsed {
+  margin-left: var(--sidebar-collapsed);
+}
+
+/* ============================================
+   SIDEBAR STYLES
+   ============================================ */
+.sidebar {
+  width: var(--sidebar-width);
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-light));
+  color: white;
+  padding: 20px 0;
+  position: fixed;
+  height: 100vh;
+  transition: width var(--transition-medium);
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  transition: opacity var(--transition-medium);
+}
+
+#toggleBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-small);
+  margin-bottom: 10px;
+}
+
+#toggleBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#toggleBtn:focus {
+  outline: 2px solid rgba(255, 214, 0, 0.5);
+  outline-offset: 2px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  border-radius: 0;
+  margin: 2px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar a i {
+  margin-right: 12px;
+  width: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent-color);
+  padding-left: 25px;
+}
+
+.sidebar a.active {
+  background: rgba(255, 214, 0, 0.2);
+  border-left: 4px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Sidebar Collapsed State */
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed);
+}
+
+.sidebar.collapsed h2 {
+  opacity: 0;
+  pointer-events: none;
+  margin-bottom: 5px;
+}
+
+.sidebar.collapsed a span {
+  display: none;
+}
+
+.sidebar.collapsed a {
+  justify-content: center;
+  padding: 15px 10px;
+  margin: 3px 5px;
+  border-radius: var(--radius-small);
+}
+
+.sidebar.collapsed a:hover {
+  padding-left: 10px; /* Remove the left padding increase on hover */
+}
+
+.sidebar.collapsed a i {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.sidebar.collapsed #toggleBtn {
+  text-align: center;
+  padding: 10px;
+  margin: 0 5px 10px 5px;
+  border-radius: var(--radius-small);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 600;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+}
+
+/* ============================================
+   CARD COMPONENTS
+   ============================================ */
+.card {
+  background: var(--surface-color);
+  padding: 20px;
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-medium);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform var(--transition-medium);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(10, 61, 145, 0.1);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card h3 i {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+}
+
+/* ============================================
+   CALENDAR COMPONENT
+   ============================================ */
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-nav button {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 8px 15px;
+  border-radius: var(--radius-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.9rem;
+}
+
+.calendar-nav button:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.calendar-nav h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.day-header {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  padding: 8px 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.date {
+  padding: 10px 4px;
+  border-radius: var(--radius-small);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.date:hover {
+  background: rgba(10, 61, 145, 0.1);
+  transform: scale(1.1);
+}
+
+.today {
+  background: var(--success-color);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
+}
+
+.today:hover {
+  background: #27ae60;
+  transform: scale(1.1);
+}
+
+.saturday {
+  color: var(--danger-color);
+  font-weight: 500;
+}
+
+/* ============================================
+   RIGHT PANEL COMPONENTS
+   ============================================ */
+.right-panel {
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
+}
+
+.right-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.right-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.right-panel::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.right-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Teacher Cards */
+.teacher {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-small);
+  margin-bottom: 5px;
+}
+
+.teacher:last-child {
+  border-bottom: none;
+}
+
+.teacher:hover {
+  background: rgba(10, 61, 145, 0.02);
+  padding-left: 10px;
+}
+
+.teacher h4 {
+  color: var(--primary-color);
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.teacher p {
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.teacher small {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Assignment & News Items */
+.assignment,
+.news {
+  padding: 10px 0;
+  border-left: 3px solid transparent;
+  padding-left: 12px;
+  margin-bottom: 12px;
+  transition: all var(--transition-fast);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+}
+
+.assignment {
+  border-left-color: var(--warning-color);
+  background: rgba(243, 156, 18, 0.05);
+}
+
+.news {
+  border-left-color: var(--success-color);
+  background: rgba(46, 204, 113, 0.05);
+}
+
+.assignment:hover,
+.news:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-light);
+}
+
+.assignment strong,
+.news strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.assignment small,
+.news small {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Attendance Display */
+.attendance {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  padding: 15px;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(231, 76, 60, 0.1));
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--border-color);
+}
+
+.attendance div {
+  text-align: center;
+  flex: 1;
+}
+
+.present {
+  color: var(--success-color);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.absent {
+  color: var(--danger-color);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* ============================================
+   ROUTINE TABLE STYLES
+   ============================================ */
+.routine-container {
+  overflow-x: auto;
+  margin-top: 20px;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-light);
+}
+
+.routine-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--surface-color);
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+}
+
+.routine-table th {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.routine-table td {
+  padding: 10px 8px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.routine-table tr:nth-child(even) {
+  background: rgba(10, 61, 145, 0.02);
+}
+
+.routine-table tbody tr:hover {
+  background: rgba(10, 61, 145, 0.08);
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+/* Form Controls */
+select {
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border-radius: var(--radius-small);
+  border: 2px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.1);
+}
+
+/* ============================================
+   LOGO POSITIONING
+   ============================================ */
+#logo {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 999;
+  transition: all var(--transition-medium);
+}
+
+#logo img {
+  max-width: 200px;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  #logo {
+    position: relative;
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 70px;
+  }
+  
+  .sidebar {
+    width: var(--sidebar-width);
+  }
+  
+  .sidebar h2,
+  .sidebar a span {
+    display: none;
+  }
+  
+  .sidebar a {
+    justify-content: center;
+    padding: 15px 10px;
+  }
+  
+  .sidebar a i {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .main {
+    margin-left: var(--sidebar-width);
+    padding: 15px;
+  }
+  
+  .main.collapsed {
+    margin-left: var(--sidebar-width);
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  .calendar {
+    gap: 4px;
+  }
+  
+  .date {
+    padding: 8px 2px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 10px;
+  }
+  
+  .card {
+    padding: 12px;
+  }
+  
+  .grid {
+    gap: 12px;
+  }
+  
+  .attendance {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #logo img {
+    max-width: 150px;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+    /* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Additional collapsed sidebar fixes */
+.sidebar.collapsed .sidebar a.active {
+  border-left: none;
+  background: rgba(255, 214, 0, 0.3);
+  border-radius: var(--radius-small);
+}
+
+.sidebar.collapsed #toggleBtn i {
+  margin: 0;
+}

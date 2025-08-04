@@ -1,0 +1,385 @@
+<h1>attendence
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MIS Dashboard - Uniglobe School</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: 220px; background: rgb(4, 15, 103); color: white;
+      padding: 20px 0; position: fixed; height: 100vh;
+    }
+    .sidebar h2 { text-align: center; margin-bottom: 30px; font-weight: 500; }
+    .sidebar a {
+      display: block; color: white; padding: 12px 20px;
+      text-decoration: none; font-size: 0.95rem;
+    }
+    .sidebar a:hover { background: rgb(4, 15, 103); }
+    .main {
+      flex: 1; margin-left: 220px; padding: 20px; max-width: 1200px;
+    }
+    h1 { font-size: 1.6rem; color: rgb(4, 15, 103); margin-bottom: 20px; }
+
+    .grid {
+      display: grid; gap: 20px; grid-template-columns: 2fr 1fr;
+    }
+
+    .card {
+      background: white; padding: 18px; border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      color: rgb(4, 15, 103); margin-bottom: 12px; font-size: 1.1rem;
+    }
+
+    /* Calendar */
+    .calendar-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 10px;
+    }
+    .calendar-nav button {
+      background: rgb(4, 15, 103); color: white; border: none; padding: 5px 10px;
+      border-radius: 4px; cursor: pointer;
+    }
+    .calendar-nav button:hover {
+      background: rgb(4, 15, 103);
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .day-header {
+      font-weight: bold;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .date {
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    .today {
+      background: bl;
+      color: white;
+    }
+
+    .saturday {
+      color: red;
+    }
+    .teacher { padding: 10px 0; border-bottom: 1px dashed #eee; }
+    .teacher:last-child { border-bottom: none; }
+    .teacher h4 { color: rgb(4, 15, 103); font-size: 1rem; }
+    .teacher small { color: #666; font-size: 0.9rem; }
+
+    .assignment, .news {
+      font-size: 0.95rem; margin-bottom: 12px;
+    }
+    .assignment strong, .news strong { color: #2c3e50; }
+    .assignment small, .news small {
+      color: #7f8c8d; display: block;
+    }
+
+    .attendance {
+      display: flex; justify-content: space-between;
+      font-size: 0.95rem; margin-top: 10px;
+    }
+    .present { color: #27ae60; font-weight: 500; }
+    .absent { color: #e74c3c; font-weight: 500; }
+    @media (max-width: 768px) {
+      .sidebar { width: 70px; text-align: center; }
+      .sidebar h2, .sidebar a span { display: none; }
+      .sidebar a i { font-size: 1.2rem; margin: 10px 0; }
+      .main { margin-left: 70px; padding: 15px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.4rem; }
+    }
+
+    @media (max-width: 480px) {
+      .main { margin-left: 0; }
+      .sidebar {
+        position: relative; width: 100%; height: auto;
+        flex-direction: row; text-align: left;
+      }
+      .sidebar h2 { display: block; font-size: 1.2rem; margin-bottom: 10px; }
+      .sidebar a i { margin-right: 5px; }
+      .sidebar a span { display: inline; }
+    }
+.right-panel {
+  max-height: 80vh;   
+  overflow-y: auto; 
+}
+.right-panel::-webkit-scrollbar {
+  width: 8px;
+}
+.right-panel::-webkit-scrollbar-thumb {
+  background: rgb(4, 15, 103);
+  border-radius: 4px;
+}
+.right-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+  </style>
+<style>
+.sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #0A3D91, #1456c2);
+  color: white;
+  position: fixed;
+  height: 100%;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-logo {
+  text-align: center;
+  padding: 15px;
+}
+
+.sidebar-logo img {
+  max-width: 140px;
+  transition: max-width 0.3s ease;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s, padding-left 0.3s;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.1);
+  padding-left: 28px;
+}
+
+.sidebar a.active {
+  background: rgba(255,214,0,0.2);
+  border-left: 4px solid #FFD600;
+  color: #FFD600;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  .sidebar a span {
+    display: none;
+  }
+  .sidebar-logo img {
+    max-width: 50px;
+  }
+  .main, .content {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    position: absolute;
+    left: -220px;
+    width: 220px;
+    z-index: 1000;
+  }
+  .sidebar.open {
+    left: 0;
+    transition: left 0.3s ease;
+  }
+  .main, .content {
+    margin-left: 0;
+  }
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #0A3D91;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 1001;
+}
+</style></head>
+<body>
+<div class="container">
+<div class="sidebar">
+<div class="sidebar-logo">
+<img alt="Uniglobe Logo" src="Uniglobelogo.png"/>
+</div>
+
+<a><img href="Uniglobelogo.png"/></a>
+<a class="sidebar-link active" data-section="dashboard" href="dashboard.html"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+<a class="sidebar-link" data-section="profile" href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+<a class="sidebar-link" data-section="fee" href="fee.html"><i class="fas fa-wallet"></i> <span>Fee</span></a>
+<a class="sidebar-link" data-section="attendance" href="attendence.html"><i class="fas fa-calendar-check"></i> <span>Attendance</span></a>
+<a class="sidebar-link" data-section="assignments" href="assignment.html"><i class="fas fa-book"></i> <span>Assignments</span></a>
+<a class="sidebar-link" data-section="reports" href="report.html"><i class="fas fa-chart-line"></i> <span>Reports</span></a>
+</div>
+<main class="main">
+<h1>Student Dashboard</h1>
+<div class="grid">
+<div class="card">
+<div class="calendar-nav">
+<button onclick="changeMonth(-1)">←</button>
+<h3 id="monthYear"></h3>
+<button onclick="changeMonth(1)">→</button>
+</div>
+<div class="calendar" id="calendarDays">
+</div>
+<p style="margin-top: 15px; font-size: 0.9rem;">
+<strong>Today:</strong> Chemistry Test<br/>
+<strong>Soon:</strong> Mid-Term Exams start Aug 25
+          </p>
+</div>
+<div class="card right-panel">
+<h3>Hello, John Doe!</h3>
+<p><small>Grade 11 - Science | ID: UG11S2025</small></p>
+<h3><i class="fas fa-chart-pie"></i> Attendance</h3>
+<div class="attendance">
+<div><span class="present">88%</span> Present</div>
+<div><span class="absent">12%</span> Absent</div>
+</div>
+<h3><i class="fas fa-chalkboard-teacher"></i> Teachers</h3>
+<div class="teacher">
+<h4>Com. English</h4>
+<p>Mr. Tika Datta Subedi</p>
+<small>tikasubedi@uniglobecollege.edu.np</small>
+</div>
+<div class="teacher">
+<h4>Chemistry</h4>
+<p>Mr. Jaya Ram Ghimire</p>
+<small>jayaramghimire@uniglobecollege.edu.np</small>
+</div>
+<div class="teacher">
+<h4>Computer</h4>
+<p>Mr. Navin Gurung</p>
+<small>Navingurung@uniglobecollege.edu.np</small>
+</div>
+<div class="teacher">
+<h4>Physics</h4>
+<p> Mr. Devendra Khadka</p>
+<small>devendrakhadka@uniglobecollege.edu.np</small>
+</div>
+<div class="teacher">
+<h4>Com. Nepali</h4>
+<p>Mr. Chudamani Pandey</p>
+<small>chudamanipandey@uniglobecollege.edu.np</small>
+</div>
+<div class="teacher">
+<h4>Com. Mathematics</h4>
+<p>Mr. Mr. Bhavanand Chaudhary</p>
+<small>@uniglobecollege.edu.np</small>
+</div>
+<h3><i class="fas fa-tasks"></i> Assignments</h3>
+<div class="assignment">
+<strong>Organic Chemistry</strong>
+<small>Due: Aug 20</small>
+</div>
+<div class="assignment">
+<strong>English Essay</strong>
+<small>Due: Aug 22</small>
+</div>
+<h3><i class="fas fa-bullhorn"></i> News</h3>
+<div class="news">
+<strong>Sports Day - Sept 10</strong>
+<small>Forms available at office</small>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    const calendarDays = document.getElementById('calendarDays');
+    const monthYear = document.getElementById('monthYear');
+    let currentDate = new Date();
+
+    function renderCalendar(date) {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const today = new Date();
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      calendarDays.innerHTML = '';
+
+      // Weekday headers
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      days.forEach(day => {
+        const div = document.createElement('div');
+        div.className = 'day-header';
+        div.innerText = day;
+        calendarDays.appendChild(div);
+      });
+
+      // Blank spaces
+      for (let i = 0; i < firstDay; i++) {
+        const blank = document.createElement('div');
+        calendarDays.appendChild(blank);
+      }
+
+      // Dates
+      for (let d = 1; d <= lastDate; d++) {
+        const dateObj = new Date(year, month, d);
+        const div = document.createElement('div');
+        div.className = 'date';
+        if (dateObj.toDateString() === today.toDateString()) {
+          div.classList.add('today');
+        }
+        if (dateObj.getDay() === 6) {
+          div.classList.add('saturday');
+        }
+        div.innerText = d;
+        calendarDays.appendChild(div);
+      }
+      const monthName = date.toLocaleString('default', { month: 'long' });
+      monthYear.innerText = `${monthName} ${year}`;
+    }
+
+    function changeMonth(offset) {
+      currentDate.setMonth(currentDate.getMonth() + offset);
+      renderCalendar(currentDate);
+    }
+
+    renderCalendar(currentDate);
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'toggle-btn';
+    toggleBtn.textContent = '☰';
+    document.body.appendChild(toggleBtn);
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
+</h1>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - YourWebsite</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+
+    <div class="logo">
+      <img src="Uniglobelogo.png" alt="Website Logo" />
+    </div>
+    <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+      <h2>Welcome Back</h2>
+      <p>Please login to your account</p>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+      </div>
+      <div class="extra-links">
+        <a href="#" onclick="alert('Redirect to reset password')">Forgot Password?</a>
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+      <p id="error-message" class="error-message"></p>
+      <p class="signup-prompt">
+        Don't have an account? <a href="#">Sign Up</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('error-message');
+
+      if (email === "admin@example.com" && password === "password123") {
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // Redirect after login
+      } else {
+        errorMsg.textContent = "Invalid email or password.";
+      }
+    }
+  </script>
+</body>
+</html>

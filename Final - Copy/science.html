@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Science Program - Uniglobe College</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* Transparent Glass Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .container {
+      width: 90%;
+      margin: auto;
+      max-width: 1200px;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border: none;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: Black;
+      border: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #4A90E2;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a:hover {
+      color: #4A90E2;
+      box-shadow: 0 6px 14px rgba(74,144,226,0.3);
+    }
+    .science-header {
+      background: url('img1.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 160px 20px 100px;
+      position: relative;
+      margin-top: 70px;
+    }
+    .science-header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 40, 90, 0.6);
+      z-index: 1;
+    }
+    .science-header h1,
+    .science-header p {
+      position: relative;
+      z-index: 2;
+    }
+    .science-header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+    .science-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* Sections */
+    h2 { text-align: center; margin: 40px 0 20px; }
+    section p { font-size: 1rem; line-height: 1.6; }
+
+    /* Card Layout */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 300px;
+      flex: 1;
+      transition: transform 0.3s ease;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-body { padding: 15px; }
+    .card h3 { color: #4A90E2; margin-bottom: 10px; }
+    .card:hover { transform: translateY(-5px); }
+    .image-text-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .image-box, .text-box { flex: 1; min-width: 300px; }
+    .image-box img { width: 100%; border-radius: 10px; }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: #4A90E2;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .btn:hover { background: #2e6bb8; }
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      padding: 20px;
+      background: #00285A;
+      color: white;
+    }px {
+      .nav-links { gap: 10px; }
+      .science-header h1 { font-size: 2.2rem; }
+      .science-header p { font-size: 1rem; }
+    }
+    @media (max-width: 500px) {
+      .card img { height: 160px; }
+      .science-header { padding: 120px 10px 80px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <div id="logo"><img src="Uniglobelogo.png" width="250px" height="150px"></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html" target="_blank">MIS</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <section class="science-header">
+    <h1>Science Program</h1>
+    <p>Empowering future scientists with quality education and modern facilities.</p>
+  </section>
+
+  <div class="container">
+    <section data-aos="fade-up">
+      <h2>About the Science Program</h2>
+      <p style="max-width: 800px; margin: auto; text-align:center;">
+        The +2 Science program at Uniglobe is designed for future doctors, engineers, and scientists.
+        With modern labs, experienced instructors, and practical-based learning, students gain a strong
+        foundation in Physics, Chemistry, Biology, and Mathematics.
+      </p>
+    </section>
+    <section data-aos="fade-up">
+      <h2>Courses Offered</h2>
+      <div class="card-container">
+        <div class="card">
+          <img src="physics.png" alt="Physics">
+          <div class="card-body">
+            <h3>Physics</h3>
+            <p>Strong conceptual and experimental foundation for aspiring engineers and researchers.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="chemistry.jpg" alt="Chemistry">
+          <div class="card-body">
+            <h3>Chemistry</h3>
+            <p>Modern labs and hands-on experiments for future scientists and doctors.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="biology.jpg" alt="Biology">
+          <div class="card-body">
+            <h3>Biology</h3>
+            <p>Comprehensive program for students aiming for careers in medicine and life sciences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section data-aos="fade-up">
+      <h2>Eligibility for +2 Science</h2>
+      <div class="image-text-grid">
+        <div class="image-box">
+          <img src="lab.png" alt="Science Lab">
+        </div>
+        <div class="text-box">
+          <h3>Admission Criteria</h3>
+          <p>Minimum SEE GPA of 2.0 with D+ in English, Mathematics, and Science. Students must have a
+             strong interest in pursuing careers in STEM fields.</p>
+        </div>
+      </div>
+    </section>
+    <section data-aos="fade-up">
+      <h2>Facilities & Resources</h2>
+      <div class="image-text-grid">
+        <div class="text-box">
+          <h3>Advanced Learning Environment</h3>
+          <p>State-of-the-art laboratories, digital classrooms, and project-based teaching
+             prepare students for higher education and competitive exams.</p>
+        </div>
+        <div class="image-box">
+          <img src="facility.jpg" alt="Facilities">
+        </div>
+      </div>
+    </section>
+    <section data-aos="fade-up" style="text-align: center;">
+      <h2>Ready to Join?</h2>
+      <p style="max-width: 700px; margin: auto;">Apply now to kickstart your journey towards a successful career in science and technology.</p>
+      <a href="admission.html" class="btn">Apply Now</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Uniglobe College. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>
